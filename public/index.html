@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fuel Sales Tracker</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Fuel Sales Tracker</h1>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-button active" data-tab="grades">Grades</button>
+    <button class="tab-button" data-tab="new-shift">New Shift</button>
+    <button class="tab-button" data-tab="history">Shift History</button>
+    <button class="tab-button" data-tab="summary">Daily Summary</button>
+  </nav>
+
+  <main>
+    <section id="tab-grades" class="tab-panel active">
+      <h2>Fuel Grades</h2>
+      <div id="grades-message" class="message"></div>
+      <table class="data-table" id="grades-table">
+        <thead>
+          <tr><th>Name</th><th>Price / Gallon</th><th></th></tr>
+        </thead>
+        <tbody id="grades-tbody"></tbody>
+      </table>
+
+      <h3>Add New Grade</h3>
+      <form id="add-grade-form" class="inline-form">
+        <label>
+          Name
+          <input type="text" id="new-grade-name" required />
+        </label>
+        <label>
+          Price / Gallon
+          <input type="number" id="new-grade-price" step="0.01" min="0" required />
+        </label>
+        <button type="submit">Add Grade</button>
+      </form>
+    </section>
+
+    <section id="tab-new-shift" class="tab-panel">
+      <h2>New Shift</h2>
+      <div id="new-shift-message" class="message"></div>
+      <form id="new-shift-form">
+        <div class="form-row">
+          <label>
+            Date
+            <input type="date" id="shift-date" required />
+          </label>
+          <label>
+            Shift Label (optional)
+            <input type="text" id="shift-label" placeholder="e.g. Morning" />
+          </label>
+        </div>
+
+        <table class="data-table" id="readings-table">
+          <thead>
+            <tr><th>Grade</th><th>Opening Reading</th><th>Closing Reading</th><th>Gallons</th><th>Revenue</th></tr>
+          </thead>
+          <tbody id="readings-tbody"></tbody>
+        </table>
+
+        <button type="submit">Submit Shift</button>
+      </form>
+    </section>
+
+    <section id="tab-history" class="tab-panel">
+      <h2>Shift History</h2>
+      <div id="history-message" class="message"></div>
+      <table class="data-table" id="history-table">
+        <thead>
+          <tr><th>Date</th><th>Label</th><th>Total Gallons</th><th>Total Revenue</th></tr>
+        </thead>
+        <tbody id="history-tbody"></tbody>
+      </table>
+    </section>
+
+    <section id="tab-summary" class="tab-panel">
+      <h2>Daily Summary</h2>
+      <div class="form-row">
+        <label>
+          Date
+          <input type="date" id="summary-date" />
+        </label>
+        <button type="button" id="summary-all-time">All Time</button>
+      </div>
+      <div id="summary-message" class="message"></div>
+      <div id="summary-totals" class="summary-totals"></div>
+      <table class="data-table" id="summary-table">
+        <thead>
+          <tr><th>Grade</th><th>Gallons</th><th>Revenue</th></tr>
+        </thead>
+        <tbody id="summary-tbody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
